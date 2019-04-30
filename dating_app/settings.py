@@ -25,7 +25,7 @@ SECRET_KEY = 'rkn(v=6##*!bcw=1%l73y784hs18zi)o#%ef&!b#2t_+f3icc1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.218.229.60']
 
 
 # Application definition
@@ -124,14 +124,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-#     '/var/www/static/',
-# ]
+# to create multiple static paths
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, "static"),
+    '/var/www/dating_app/apps/dating/static/',
+    '/var/www/dating_app/apps/dating_admin/static/',
+    '/var/www/dating_app/apps/login/static/',
+]
 
 # STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 # STATIC_ROOT = 'C:/Users/yofet/Desktop/Practice-Projects/Coding Dojo Info/Python Stack/Python Project/dating_app/apps/dating/static/dating/'
-STATIC_ROOT = "/var/www/dating_app/apps/dating/static/dating/"
+# STATIC_ROOT = "/var/www/dating_app/apps/dating/static/dating/"
 
-MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
+MEDIA_ROOT = '/var/www/dating_app/apps/dating/static/dating/media'
 MEDIA_URL = '/media/'
