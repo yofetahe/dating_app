@@ -1,0 +1,49 @@
+{% extends 'dating/base_3.html' %} 
+
+{% block base_3_content %}
+{% load staticfiles%}
+
+    <div class="col-md-12">        
+        <div class="messages-tabs">
+            <a id="message" href="#" class="active" > Messages </a>
+            <a id="like" href="#"> Whom you likes </a>
+        </div>
+        <div id='display' style="padding-top: 15px"> 
+            {% include 'dating/messages.html' %}
+        </div>        
+    </div>
+
+    <script>
+        //////////////AJAX/////////////
+
+        $(document).ready(function() {
+
+            $('#message').click(function() {
+                $.ajax({
+                    url: '{% url "display_messages" %}',
+                    type: 'get',
+                    dataType: 'html',
+                    success: function(data) {
+                        document.getElementById('message').className = 'active'
+                        document.getElementById('like').className = ''
+                        $('#display').html(data)
+                    }
+                });
+            });
+
+            $('#like').click(function() {
+                
+                $.ajax({
+                    url: '{% url "like_pic_dispaly" %}',
+                    type: 'get',
+                    dataType: 'html',
+                    success: function(data) {
+                        document.getElementById('message').className = ''
+                        document.getElementById('like').className = 'active'
+                        $('#display').html(data)
+                    }
+                });
+            });
+        })
+    </script>
+{% endblock base_3_content %}

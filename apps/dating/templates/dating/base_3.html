@@ -1,0 +1,33 @@
+{% extends 'dating/base.html' %}
+
+{% block base_content %}
+{% load staticfiles%}
+<div class="row">    
+        <div class='col-md-9'>
+            {% block base_3_content %}
+            
+            {% endblock base_3_content %}
+        </div>
+        <div class="col-md-3">                    
+            <div class='border mt-sm-3 text-center'>
+                 {% if user.pictures.all %}
+                    {% for pic in user.pictures.all %}                            
+                        {% if pic.is_profile_pic == 'TRUE' %}
+                            {% for key, value in photo_url.items %} 
+                                {% if key == pic.id %}                                                                 
+                                    <img class="profile_photo" src="{% static value %}" alt="profile_pic">
+                                {% endif %}
+                            {% endfor %} 
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <img class="profile_photo" src="{% static 'login/images/default-male.gif' %}" alt=""/>
+                {% endif %}  
+                <p>Welcome, <b>{{user.name}}</b></p>
+                <p>Age - {{user.age}}</p>
+                <p>Location - {{user.zip_code}}</p>
+                <p>You are seeking - {{user.seeking_for}}</p>
+            </div>
+        </div>
+    </div>
+{% endblock base_content %}

@@ -1,0 +1,135 @@
+{% extends 'dating/base_1.html' %} 
+
+{% load staticfiles%} 
+{% block base_1_content %}
+<script>
+    $(document).ready(function() {
+        // $('#search_form').submit(function(e) {
+        //     alert("in")
+        //     e.preventDefault()
+        //     $.ajax({
+        //         url: '/search_memebers/',
+        //         method: 'post',
+        //         data: $(this).serialize(),
+        //         success: function(serverResponse) {
+        //             alert("in")
+        //             $('#search_result').html(serverResponse)
+        //         }
+        //     })
+        //     return false;
+        // })
+
+        $('#search_form').on('submit', function(event){
+            event.preventDefault();
+            $.ajax({
+                url: '/dating/search_memebers/',
+                method: 'post',
+                data: $(this).serialize(),
+                success: function(serverResponse) {
+                    $('#search_result').html(serverResponse)
+                }
+            })
+        });
+    })
+</script>
+
+<form id="search_form" class="col-sm-12" action="{% url 'search_memebers' %}" method="POST">
+    {%csrf_token%}
+    <div class='row'>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-5 col-form-label">Seeking for</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="seekfor" value="Man">
+                    <label class="form-check-label" for="inlineRadio1">Man</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="seekfor" value="Women">
+                    <label class="form-check-label" for="inlineRadio2">Women</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group  row">
+                <label for="" class="col-sm-6 col-form-label">Age Between</label>
+                <div class="col-sm-6">
+                    <select name="age_between" id="" class="form-control" >
+                        <option value="">-</option>
+                        {% for age in age_range %}
+                            <option>{{age}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-6 col-form-label">Ethnic Group</label>
+                <div class="col-sm-6">
+                    <select name="ethnic_group" id="" class="form-control" >
+                        <option value="">-</option>
+                        {% for group in ethnic_group %}
+                            <option>{{group}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-6 col-form-label">Marital Status</label>
+                <div class="col-sm-6">
+                    <select class='form-control' name='marital_status'>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="separated">Separated</option>
+                        <option value="divorced">Divorced</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="zip_code" class="col-sm-6 col-form-label">Zip Code</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="zip_code" placeholder="">
+                </div>
+            </div>
+        </div>        
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-6">Religion</label>
+                <div class="col-sm-6">
+                    <select name="religion" id="" class="form-control" >
+                        <option value="">-</option>
+                        {% for rel in religion %}
+                            <option>{{rel}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>    
+        <div class="col-md-4">
+            <div class="form-group row">
+                <label for="" class="col-sm-6 col-form-label">Education level</label>
+                <div class="col-sm-6">
+                    <select name="educational_level" id="" class="form-control" >
+                        <option value="">-</option>
+                        {% for edu in educational_level %}
+                            <option>{{edu}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='mb-sm-2'>
+        <input name="search_form_btn" class="btn btn-light" type="submit" value="Search">
+    </div>
+</form>
+<hr>
+<div id="search_result" >
+
+</div>
+
+{% endblock base_1_content %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Look-4-Me</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <!--JQuery UI-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Begin - javascript and CSS required for datepicker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- End - javascript and CSS required for datepicker -->
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'dating/css/main.css' %}">
+    <script src="{% static 'login/js/main.js' %}"></script>
+    
+</head>
+<body id="login_body">
+    <div class = "header">
+        <div class="container">
+                <div id="sm-logo">
+                    Look4Me
+                </div>
+                <div class="header_link_container">
+                    <a href="#">Home</a> &nbsp; | &nbsp;
+                    <a href="#">About us</a> &nbsp; | &nbsp;
+                    <a href="#">Clients Comment</a> &nbsp; | &nbsp;
+                    <a href="#">Contact Us</a>
+                </div>
+            <div class="container">
+                <form action="">
+                    <div class="login_form">
+                        <label for=""></label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="form_container container">
+        {% block content %}
+            
+        {% endblock content %}
+    </div>    
+    <div>        
+        {% include 'login/footer.html' %}
+    </div>
+
+
+</body>
+</html>
