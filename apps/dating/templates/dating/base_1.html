@@ -9,8 +9,8 @@
                          {% if user.pictures.all %}
                             {% for pic in user.pictures.all %}                            
                                 {% if pic.is_profile_pic == 'TRUE' %}
-                                    {% for key, value in photo_url.items %} 
-                                        {% if key == pic.id %}                                                                 
+                                    {% for key, value in photo_url.items %}                                        
+                                        {% if key == pic.id %}
                                             <img class="profile_photo" 
                                                 src="{% static value %}" 
                                                 alt="profile_pic">
